@@ -92,8 +92,8 @@ h1 {
     font-size: 36px;
     line-height: 48px;
     margin: 0 0 24px;
-    color: #5051DB;
     font-weight: 200;
+    color: #5051DB;
 }
 
 h2 {
@@ -184,6 +184,20 @@ a:focus {
   #OBJECTS
 \*------------------------------------*/
 
+.flex-container {
+    display: -webkit-flex;
+    display: flex;  
+    text-align: left;  
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    flex: 1 0px;
+}
+
+.flex-container > * {
+    padding: 10px;
+    flex: 1 100%;
+}
+
 /*
     Objects: Row
     ---
@@ -214,6 +228,18 @@ a:focus {
     }
 }
 
+.o-row—neutral-x-light{
+    background-color: #F7F7F7;
+}
+
+.o-color-white{
+    color: #F7F7F7;
+}
+
+.o-row--gradient{
+  background:         linear-gradient(to top right, #5051DB 0%,#3887F7 100%); /* Fx 10+, Op 11.6+, Ch 26+, IE 10 */
+}
+
 /*
     Objects: Container
     ---
@@ -221,6 +247,10 @@ a:focus {
 */
 
 .o-container {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap; 
     margin-left: auto;
     margin-right: auto;
     width: 100%;
@@ -238,7 +268,7 @@ a:focus {
 .o-layout {
     display: -webkit-flex;
     display: -ms-flexbox;
-    display: flex;
+    display: inline;
     flex-wrap: wrap;
 }
 
@@ -344,6 +374,16 @@ a:focus {
     align-content: space-between;
 }
 
+/*
+    Objects: List
+    ---
+    Small reusable object to remove default list styling from lists
+*/
+
+.o-list {
+    list-style: none;
+    padding: 0;
+}
 /*------------------------------------*\
   #COMPONENTS
 \*------------------------------------*/
@@ -366,9 +406,232 @@ a:focus {
         height: 40%;
     }
 }
+
+/*
+    Component: Nav
+    ---
+    Main navigation of the site
+*/
+
+.c-nav {
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.c-nav__link {
+    text-decoration: none;
+    font-weight: 400;
+    padding: 8px 0;
+    display: inline-block;
+}
+
+li {
+    float: left;
+}
+
+.c-link-cta--inverse,
+.c-link-cta--inverse:visited,
+.c-link-cta--inverse:active {
+    color: #fff;
+}
+
+.c-link-cta--inverse::after {
+    color: #fff;
+}
+
+.c-link-cta--inverse:hover::after {
+    color: #fff;
+}
+
+.c-nav__link,
+.c-nav__link:visited,
+.c-nav__link:active {
+    color: #202024;
+}
+
+.c-nav__link:hover,
+.c-nav__link:focus {
+    color: #5051DB;
+}
+
+.c-nav—meta{
+    font-size: 16px;
+}
+
+.c-nav__link—meta,
+.c-nav__link—meta:visited,
+.c-nav__link—meta:active {
+    color: #6c6c75;
+}
+
+.c-nav__link—meta:hover,
+.c-nav__link—meta:focus {
+    color: #5051DB;
+}
+
+.is-selected .c-nav__link,
+.c-nav__link:hover,
+.c-nav__link:focus {
+    color: #5051DB;
+}
+
+@media (min-width: 768px) {
+    .c-nav__list {
+        display: flex;
+    }
+
+    .c-nav__link {
+        padding: 8px 16px;
+    }
+}
+
+.c-link-cta{
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    padding: 4px 0;
+    transition: color .175s ease-in;
+}
+
+.c-link-cta::before:hover{
+    transform: scaleX(0.5);
+    background-color: #3E3EA8;
+}
+
+.c-link-cta::before{
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background-color: #7373f5;
+
+    transform: scaleX(0.5);
+    transform-origin: left;
+    transition-property: transform background-color;
+    transition-duration: 0.175s;
+    transition-timing-function: ease-in;
+}
+
+/*
+    Component: header
+    ---
+    Main header of the website
+*/
+
+.c-header__nav {
+    display: none;
+}
+
+@media (min-width: 992px) {
+    .c-header {
+    }
+
+    .c-header__nav {
+        display: block;
+    }
+}
+
+/*
+    Component: Lead
+    ---
+    Lead type treatments to style everything that differs from standard typography elements
+*/
+
+.c-lead {
+    font-weight: 200;
+}
+
+.c-lead--lg {
+    font-size: 20px;
+    line-height: 32px;
+}
+
+.c-lead--xl {
+    font-size: 26px;
+    line-height: 32px;
+}
+
+.c-lead--xxl {
+    font-size: 32px;
+    line-height: 40px;
+}
+
+.c-lead--xxxl {
+    font-size: 36px;
+    line-height: 48px;
+}
+
+@media (min-width: 768px) {
+    .c-lead--lg {
+        font-size: 23px;
+        line-height: 32px;
+    }
+
+    .c-lead--xl {
+        font-size: 32px;
+        line-height: 40px;
+    }
+
+    .c-lead--xxl {
+        font-size: 41px;
+        line-height: 48px;
+    }
+
+    .c-lead--xxxl {
+        font-size: 52px;
+        line-height: 64px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .c-lead--lg {
+        font-size: 26px;
+        line-height: 36px;
+    }
+
+    .c-lead--xl {
+        font-size: 36px;
+        line-height: 48px;
+    }
+
+    .c-lead--xxl {
+        font-size: 52px;
+        line-height: 64px;
+    }
+
+    .c-lead--xxxl {
+        font-size: 66px;
+        line-height: 72px;
+    }
+}
+
 /*------------------------------------*\
   #UTILITIES
 \*------------------------------------*/
+
+/*
+    Utilities: color
+    ---
+    Utility classes to put specific colors onto elements
+*/
+
+.u-color-primary-light {
+    color: #7373f5 !important;
+}
+
+.u-color-primary-base {
+    color: #5051DB !important;
+}
+
+.u-color-primary-dark {
+    color: #3E3EA8 !important;
+}
 
 /*
     Utilities: max-width
@@ -376,11 +639,16 @@ a:focus {
     Utility classes to put specific max widths onto elements
 */
 
+.u-max-width-logo {
+    max-width: 6.5em !important;
+}
+
 .u-max-width-xs {
     max-width: 18em !important;
 }
 
 .u-max-width-sm {
+    flex: 0.5 auto;
     max-width: 36em !important;
 }
 
